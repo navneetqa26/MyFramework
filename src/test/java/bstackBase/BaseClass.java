@@ -3,6 +3,7 @@ package bstackBase;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.time.Duration;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,6 +21,7 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
 import bstackPageMethods.Method_01_SignInPageMethods;
 import bstackPageMethods.Method_02_ProductListPagemethods;
+import bstackPageMethods.Method_03_ShippingDetailsMethod;
 import bstackUtilities.ConfigReader;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -33,12 +35,14 @@ public class BaseClass {
   WebDriver driver;
   protected Method_01_SignInPageMethods signInPageMethods;
   protected Method_02_ProductListPagemethods  productListPagemethods;
+  protected Method_03_ShippingDetailsMethod   shippingDetailsMethods;
   ConfigReader configReader;
   
   public void initialize()
   {
 	  signInPageMethods = new Method_01_SignInPageMethods(driver);
 	  productListPagemethods = new Method_02_ProductListPagemethods(driver);
+	  shippingDetailsMethods = new Method_03_ShippingDetailsMethod(driver);
 	  configReader = new ConfigReader();
   }
   
@@ -52,37 +56,28 @@ public class BaseClass {
 	  
 	  WebDriverManager.chromedriver().setup();
 	  driver = new ChromeDriver();
+	  driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 	  initialize();
 	  driver.manage().window().maximize();
 	  driver.get(configReader.getURL());
 			
   }
   
-  @BeforeMethod
-  public void getMethodName(Method method)
-  {
-	  methodName = method.getName();
-	  test = report.createTest(methodName);
-  }
+	/*
+	 * @BeforeMethod public void getMethodName(Method method) { methodName =
+	 * method.getName(); test = report.createTest(methodName); }
+	 */
   
-  @AfterMethod
-  public void setTestResult(ITestResult result, Method method)
-  {
-	  if(result.getStatus()==ITestResult.SUCCESS)
-	  {
-		 test.log(Status.PASS, "test is passed");
-	  }
-	  else
-		  if (result.getStatus() == ITestResult.FAILURE)
-		  {
-			 test.log(Status.FAIL, "test is failed");  
-		  }
-	  
-  }
+	/*
+	 * @AfterMethod public void setTestResult(ITestResult result, Method method) {
+	 * if(result.getStatus()==ITestResult.SUCCESS) { test.log(Status.PASS,
+	 * "test is passed"); } else if (result.getStatus() == ITestResult.FAILURE) {
+	 * test.log(Status.FAIL, "test is failed"); }
+	 * 
+	 * }
+	 */
   
-  @AfterSuite
-  public void generateReport()
-  {
-	  report.flush();
-  }
+	/*
+	 * @AfterSuite public void generateReport() { report.flush(); }
+	 */
 }

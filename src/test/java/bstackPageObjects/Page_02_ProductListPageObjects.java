@@ -14,11 +14,23 @@ public class Page_02_ProductListPageObjects {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public @FindBy(xpath="//*[@id=\"__next\"]/div/div/main/div[1]/div[4]/label/span")
+	public @FindBy(xpath="/html/body/div/div/div/main/div[1]/div[4]/label/span")
 	WebElement vendor;
+
 	
 	public @FindBy(className="shelf-item__title")
 	List<WebElement> productTitles;
+	
+	public @FindBy(xpath="//*[@id=\"20\"]/div[4]")
+	WebElement addToCartButton;
+	
+	public @FindBy(xpath="/html/body/div[1]/div/div/div[2]/div[2]/div[2]/div/div[3]/p[1]")
+	WebElement product;
+	
+	public @FindBy(xpath="/html/body/div/div/div/div[2]/div[2]/div[3]/div[3]")
+	WebElement checkout;
+	
+	
 	
 
 	

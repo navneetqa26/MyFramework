@@ -9,10 +9,9 @@ import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 public class ExtentReporting {
 	
 	static ExtentReports report;
-	static ExtentTest test;
 	static ExtentSparkReporter reporter;
 	
-	public ExtentReports startReport()
+	public static ExtentReports startReport()
 	{
 		report = new ExtentReports();
 		String filePath = "C:\\Users\\HP\\eclipse-workspace\\FrameWorkLessons\\TestReport\\TestReport.html";

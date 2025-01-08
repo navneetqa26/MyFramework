@@ -13,6 +13,7 @@ public class Method_02_ProductListPagemethods{
 	
 	WebDriver driver;
 	Page_02_ProductListPageObjects productListPageObjects;
+	List<WebElement> phoneTitleList;
 	
 	public Method_02_ProductListPagemethods(WebDriver driver)
 	{
@@ -29,7 +30,7 @@ public class Method_02_ProductListPagemethods{
 	public boolean vendorSearchVerification() throws InterruptedException
 	{
 		  Thread.sleep(3000);
-		  List<WebElement> phoneTitleList = productListPageObjects.productTitles;
+		  phoneTitleList = productListPageObjects.productTitles;
 		  boolean result = true;
 		  for(WebElement phoneTitle : phoneTitleList )
 		  {
@@ -47,6 +48,29 @@ public class Method_02_ProductListPagemethods{
 			  
 		  }
 		  return result;
+	}
+	
+	public void clickAddCartButton()
+	{
+		productListPageObjects.addToCartButton.click();
+	}
+	
+	public boolean checkCartProduct()
+	{
+		String expected = phoneTitleList.get(0).getText();
+		String actual = productListPageObjects.product.getText();
+	    if(expected.equals(actual))
+	    {
+	    	return true;
+	    }
+	    else
+	    {
+	    	return false;
+	    }
+	}
+	public void clickCheckoutButton()
+	{
+		productListPageObjects.checkout.click();
 	}
 
 }

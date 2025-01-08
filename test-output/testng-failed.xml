@@ -5,11 +5,8 @@
     <classes>
       <class name="bstackTestScripts.Test_01_SignInPageTest">
         <methods>
-          <include name="generateReport"/>
-          <include name="verifySignIn"/>
-          <include name="getMethodName"/>
+          <include name="verifyCart"/>
           <include name="setUp"/>
-          <include name="setTestResult"/>
         </methods>
       </class> <!-- bstackTestScripts.Test_01_SignInPageTest -->
     </classes>

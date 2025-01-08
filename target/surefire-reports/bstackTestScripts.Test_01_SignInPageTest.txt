@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: bstackTestScripts.Test_01_SignInPageTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 37.59 s -- in bstackTestScripts.Test_01_SignInPageTest
